@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.repository.ProductRepository;
-import com.example.kong.entity.Order;
-import com.example.kong.repository.OrderRepository;
 
 @Service
 public class ProductService {
