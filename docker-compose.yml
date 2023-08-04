@@ -32,7 +32,10 @@ services:
       test: ["CMD", "pg_isready", "-U", "kong"]
       interval: 30s
       timeout: 3s
-      retries: 5
+      retries: 5  
+    volumes:
+      - /home/ubuntu:/var/lib/postgresql/data
+      
 
   #######################################
   # Kong database migration
@@ -124,42 +127,3 @@ services:
   #######################################
   # Demo services : alpha, beta, gamma, omega
   #######################################
-  alpha:
-    container_name: alpha
-    image: timpamungkas/alpha:2.1
-    restart: unless-stopped
-    networks:
-      kong-net:
-        ipv4_address: 172.1.1.11
-    ports:
-      - "9001:9001"
-      
-  beta:
-    container_name: beta
-    image: timpamungkas/beta:2.1
-    restart: unless-stopped
-    networks:
-      kong-net:
-        ipv4_address: 172.1.1.12
-    ports:
-      - "9002:9002"
-      
-  gamma:
-    container_name: gamma
-    image: timpamungkas/gamma:2.1
-    restart: unless-stopped
-    networks:
-      kong-net:
-        ipv4_address: 172.1.1.13
-    ports:
-      - "9003:9003"
-
-  omega:
-    container_name: omega
-    image: timpamungkas/omega:2.1
-    restart: unless-stopped
-    networks:
-      kong-net:
-        ipv4_address: 172.1.1.14
-    ports:
-      - "9004:9004"
